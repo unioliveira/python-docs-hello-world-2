@@ -26,7 +26,7 @@ steps:
 - script: |
     pip install pytest pytest-azurepipelines pytest-cov
     #pytest
-    pytest -v -junitxml=junit/test-results.xml -cov -cov-report=xml -cov-report=html
+    pytest -v -cov -cov-report=xml -cov-report=html
   displayName: 'pytest'
 - script: "echo \"$(Build.ArtifactStagingDirectory) e Application$(Build.BuildId) e $(webAppName) e $(Build.SourcesDirectory) \"  "
 
