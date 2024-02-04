@@ -1,19 +1,42 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
-
+  branches:
+    include:
+    - master
 pool:
-  vmImage: dsv-linux-01
+  name: demopipeline
+stages:
+- stage: __default
+  jobs:
+  - deployment: VMDeploy
+    displayName: Deploy to VM
+    environment:
+      name: env-demopipeline
+      resourceName: dsv-linux-01
+      resourceType: virtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadGitHubRelease@0
+            displayName: 'Download Release'
+            inputs:
+              connection: 'unioliveira'
+              userRepository: 'unioliveira/python-docs-hello-world-2'
+              defaultVersionType: 'latest'
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '3.x'
+            displayName: 'Use Python 3.x'
+          - task: CmdLine@2
+            displayName: 'Install dependencies'
+            inputs:
+              script: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+          - task: CmdLine@2
+            displayName: 'Update execution log'
+            inputs:
+              script: "echo \"`date` - OK - Execucao com sucesso\" >> /tmp/result.log"
+
