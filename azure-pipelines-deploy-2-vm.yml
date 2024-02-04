@@ -20,7 +20,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: DownloadBuildArtifacts@1
+          - task: DownloadBuildArtifacts@0
             inputs:
               buildType: 'specific'
               project: '872b5e40-c4d3-4422-a791-daff8935cd8d'
