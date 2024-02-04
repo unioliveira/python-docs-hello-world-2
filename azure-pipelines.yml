@@ -27,7 +27,7 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
-- script: "echo \"$(Build.ArtifactStagingDirectory) e Application$(Build.BuildId)\""
+- script: "echo \"$(Build.ArtifactStagingDirectory) e Application$(Build.BuildId) e $(webAppName) e $(Build.SourcesDirectory) \"  "
 
 - task: ArchiveFiles@2
   inputs:
@@ -40,3 +40,4 @@ steps:
 - publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
   displayName: 'Upload Package'
   artifact: drop
+
