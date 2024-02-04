@@ -1,0 +1,31 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- main
+
+
+stages:
+- stage: __default
+  jobs:
+  - deployment: VMDeploy
+    displayName: Deploy to VM
+    environment:
+      name: env-demopipeline
+      resourceName: dsv-linux-01
+      resourceType: virtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@1
+            inputs:
+              buildType: 'specific'
+              project: '872b5e40-c4d3-4422-a791-daff8935cd8d'
+              pipeline: '8'
+              buildVersionToDownload: 'latest'
+              downloadType: 'single'
+              downloadPath: '$(System.ArtifactsDirectory)'
+
