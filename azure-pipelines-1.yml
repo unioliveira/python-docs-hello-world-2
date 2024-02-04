@@ -20,7 +20,7 @@ stages:
           - task: DownloadGitHubRelease@0
             displayName: 'Download Release'
             inputs:
-              connection: 'unioliveira'
+              connection: 'unioliveira1'
               userRepository: 'unioliveira/python-docs-hello-world-2'
               defaultVersionType: 'latest'
           - task: UsePythonVersion@0
