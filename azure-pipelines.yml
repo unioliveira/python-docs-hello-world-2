@@ -37,9 +37,9 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-- publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
-  displayName: 'Upload Package'
-  artifact: drop
+#- publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
+#  displayName: 'Upload Package'
+#  artifact: drop
 
 - task: PublishPipelineArtifact@1
   inputs:
