@@ -28,3 +28,15 @@ steps:
     pytest
   displayName: 'pytest'
 - script: "echo \"$(Build.ArtifactStagingDirectory) e Application$(Build.BuildId)\""
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
+  displayName: 'Upload Package'
+  artifact: drop
