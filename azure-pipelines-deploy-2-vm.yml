@@ -22,7 +22,7 @@ stages:
           steps:
           - task: DownloadBuildArtifacts@0
             inputs:
-              artifactName: hello
+              artifactName: drop
               buildType: 'specific'
               project: '872b5e40-c4d3-4422-a791-daff8935cd8d'
               pipeline: '8'
