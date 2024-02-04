@@ -25,7 +25,7 @@ stages:
               artifactName: drop
               buildType: 'specific'
               project: '872b5e40-c4d3-4422-a791-daff8935cd8d'
-              pipeline: '8'
+              #pipeline: '8'
               buildVersionToDownload: 'latest'
               downloadType: 'single'
               downloadPath: '$(System.ArtifactsDirectory)'
