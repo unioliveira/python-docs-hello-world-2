@@ -29,4 +29,9 @@ stages:
               buildVersionToDownload: 'latest'
               downloadType: 'single'
               downloadPath: '$(System.ArtifactsDirectory)'
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish HTML"
+            inputs:
+              pathToPublish: "/tmp/myapp-publish/"
+              artifactName: "drop"
 
