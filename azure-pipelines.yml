@@ -49,7 +49,7 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
-    artifact: 'drop'
+    artifact: 'drop2'
     publishLocation: 'pipeline'
 - script: "mkdir ./htmlcov"
 - task: PublishBuildArtifacts@1
