@@ -35,3 +35,9 @@ stages:
               pathToPublish: '$(System.ArtifactsDirectory)' #"/tmp/myapp-publish/"
               artifactName: "drop"
 
+          - script: "mkdir ./htmlcov"
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish coverage"
+            inputs:
+              pathToPublish: "./htmlcov/"
+              artifactName: "coverage"
