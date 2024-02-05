@@ -47,6 +47,11 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'drop'
     publishLocation: 'pipeline'
+- task: PublishBuildArtifacts@1
+  displayName: "Publish coverage"
+  inputs:
+    pathToPublish: "./htmlcov/"
+    artifactName: "coverage"
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish Cobertura Coverage Report'
   inputs:
