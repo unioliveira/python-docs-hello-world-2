@@ -34,23 +34,23 @@ steps:
     pytest -v -cov -cov-report=xml -cov-report=html
   displayName: 'pytest'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
-    replaceExistingArchive: true
+#- task: ArchiveFiles@2
+#  inputs:
+#    rootFolderOrFile: '$(Build.SourcesDirectory)'
+#    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
+#    replaceExistingArchive: true
 
-- publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
-  displayName: 'Upload Package'
-  artifact: drop
+#- publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
+#  displayName: 'Upload Package'
+#  artifact: drop
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'drop2'
-    publishLocation: 'pipeline'
+#- task: PublishPipelineArtifact@1
+#  inputs:
+#    targetPath: '$(Pipeline.Workspace)'
+#    artifact: 'drop2'
+#    publishLocation: 'pipeline'
 - script: "mkdir ./htmlcov"
 - task: PublishBuildArtifacts@1
   displayName: "Publish coverage"
