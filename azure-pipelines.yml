@@ -47,10 +47,11 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'drop'
     publishLocation: 'pipeline'
+- script: "mkdir ./htmlcov"
 - task: PublishBuildArtifacts@1
   displayName: "Publish coverage"
   inputs:
-    pathToPublish: "./htmlcov/"
+    #pathToPublish: "./htmlcov/"
     artifactName: "coverage"
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish Cobertura Coverage Report'
