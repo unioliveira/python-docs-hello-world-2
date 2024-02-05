@@ -45,9 +45,14 @@ steps:
 
 - publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
   displayName: 'Upload Package'
-  artifact: coverage
-  
+  artifact: drop
 
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish HTML"
+  inputs:
+    pathToPublish: '$(System.ArtifactsDirectory)' #"/tmp/myapp-publish/"
+    artifactName: "drop"
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(Pipeline.Workspace)
