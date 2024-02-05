@@ -45,20 +45,15 @@ steps:
 
 - publish: $(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip
   displayName: 'Upload Package'
-  artifact: drop2
+  artifact: coverage
   
 
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(Pipeline.Workspace)
-    artifact: 'drop'
-    publishLocation: pipeline
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: $(Pipeline.Workspace)
     artifact: 'coverage'
-
     publishLocation: pipeline
+
 - script: "mkdir ./htmlcov"
 - task: PublishBuildArtifacts@1
   displayName: "Publish coverage"
