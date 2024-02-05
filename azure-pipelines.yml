@@ -51,7 +51,7 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(Pipeline.Workspace)
-    artifact: 'coverage'
+    artifact: 'coverage1'
     publishLocation: pipeline
 
 - script: "mkdir ./htmlcov"
