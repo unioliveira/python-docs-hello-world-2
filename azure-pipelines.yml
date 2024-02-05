@@ -50,7 +50,7 @@ steps:
   inputs:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'drop2'
-    publishLocation: filepath
+    publishLocation: pipeline
 - script: "mkdir ./htmlcov"
 - task: PublishBuildArtifacts@1
   displayName: "Publish coverage"
