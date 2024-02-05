@@ -18,7 +18,7 @@ steps:
 - script: echo "Application-Build.BuildID= Application$(Build.BuildId)"
 - script: echo "Build.sourceDirectoy=  $(Build.SourcesDirectory)"
 - script: echo "Pipelineworkspace= $(Pipeline.Workspace)"
-
+- script: "mkdir ./htmlcov"
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
@@ -63,7 +63,7 @@ steps:
     artifact: 'coverage1'
     publishLocation: pipeline
 
-- script: "mkdir ./htmlcov"
+
 - task: PublishBuildArtifacts@1
   displayName: "Publish coverage"
   inputs:
