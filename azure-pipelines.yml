@@ -47,15 +47,15 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'drop'
     publishLocation: 'pipeline'
-- script: "mkdir ./htmlcov"
+- script: "mkdir ./htmlcov2"
 - task: PublishBuildArtifacts@1
   displayName: "Publish coverage"
   inputs:
-    #pathToPublish: "./htmlcov/"
+    pathToPublish: "./htmlcov2/"
     artifactName: "coverage"
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish Cobertura Coverage Report'
   inputs:
     codeCoverageTool: Cobertura
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcovcobertura'
