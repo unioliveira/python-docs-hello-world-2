@@ -32,6 +32,6 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: "Publish HTML"
             inputs:
-              pathToPublish: "/tmp/myapp-publish/"
+              pathToPublish: '$(System.ArtifactsDirectory)' #"/tmp/myapp-publish/"
               artifactName: "drop"
 
