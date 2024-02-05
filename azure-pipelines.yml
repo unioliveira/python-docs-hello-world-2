@@ -46,11 +46,11 @@ steps:
 #  displayName: 'Upload Package'
 #  artifact: drop
 
-#- task: PublishPipelineArtifact@1
-#  inputs:
-#    targetPath: '$(Pipeline.Workspace)'
-#    artifact: 'drop2'
-#    publishLocation: 'pipeline'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'drop2'
+    publishLocation: filepath
 - script: "mkdir ./htmlcov"
 - task: PublishBuildArtifacts@1
   displayName: "Publish coverage"
