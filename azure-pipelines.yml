@@ -34,7 +34,11 @@ steps:
     #pytest
     pytest -v -cov -cov-report=xml -cov-report=html
   displayName: 'pytest'
-
+- task: PublishBuildArtifacts@1
+  displayName: "Publish HTML"
+  inputs:
+    pathToPublish: /home/azureuser/tmp/ # '$(System.ArtifactsDirectory)' #"/tmp/myapp-publish/"
+    artifactName: "publish-html"
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.SourcesDirectory)'
